@@ -10,6 +10,7 @@ export default class MyDocument extends Document {
 						name="viewport"
 						content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui"
 					/>
+					<link rel="icon" href="logo.png" type="image/x-icon"/>
 					<meta name="theme-color" content="#673ab7" />
 					<link rel="manifest" href="static/manifest.json" />
 					{/* Import Google Icon Font */}
