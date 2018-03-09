@@ -12,16 +12,22 @@ export default class MyDocument extends Document {
 					/>
 					<meta name="theme-color" content="#673ab7" />
 					<link rel="manifest" href="static/manifest.json" />
-					<link
+					{/* Import Google Icon Font */}
+					<link 
 						rel="stylesheet"
-						href="https://code.getmdl.io/1.3.0/material.deep_purple-blue.min.css"
+						href="https://fonts.googleapis.com/icon?family=Material+Icons" 
+					/>
+					{/* Import materialize.css */}
+					<link 
+						rel="stylesheet" 
+						href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css"
 					/>
 					<title>Glass app</title>
 				</Head>
 				<body>
 					<Main />
 					<NextScript />
-					<script defer src="https://code.getmdl.io/1.3.0/material.min.js" />
+					<script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js" />
 				</body>
 			</html>
 		)
