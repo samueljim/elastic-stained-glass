@@ -14,13 +14,13 @@ export default class MyDocument extends Document {
 					<meta name="theme-color" content="#673ab7" />
 					<link rel="manifest" href="static/manifest.json" />
 					{/* Import Google Icon Font */}
-					<link 
+					<link
 						rel="stylesheet"
-						href="https://fonts.googleapis.com/icon?family=Material+Icons" 
+						href="https://fonts.googleapis.com/icon?family=Material+Icons"
 					/>
 					{/* Import materialize.css */}
-					<link 
-						rel="stylesheet" 
+					<link
+						rel="stylesheet"
 						href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css"
 					/>
 					<title>Glass app</title>

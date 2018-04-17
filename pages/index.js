@@ -2,7 +2,7 @@ import 'isomorphic-fetch';
 import React from 'react';
 import Markdown from 'react-markdown'
 import withRedux from 'next-redux-wrapper';
-import { ReactiveBase, ResultCard, CategorySearch, SingleRange  } from '@appbaseio/reactivesearch';
+import { ReactiveBase, RangeInput, ResultCard, CategorySearch, SingleRange  } from '@appbaseio/reactivesearch';
 
 import initStore from '../utils/store';
 
@@ -14,23 +14,38 @@ class Index extends React.Component {
 			<ReactiveBase
 			app="car-store"
 			credentials="cf7QByt5e:d2d60548-82a9-43cc-8b40-93cbbe75c34c">
-				<nav>
-					<div class="nav-wrapper">
-						<a href="#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-					</div>
-				</nav>
+			  {/* <div className="navbar-fixed"> */}
+					{/* <nav> */}
+						{/* <div className="nav-wrapper"> */}
+							<a data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+							{/* <p>Hey</p> */}
+						{/* </div> */}
+					{/* </nav> */}
+				{/* </div> */}
 					<ul id="slide-out" className="sidenav sidenav-fixed">
 						<CategorySearch
-							componentId="searchbox"
+							componentId="search"
 							dataField="name"
 							categoryField="brand.raw"
-							placeholder="Search for cars"
+              placeholder="Search for cars"
+              URLParams={true}
 							style={{
 								padding: "5px",
 								marginTop: "10px"
 							}}
 						/>
-						<SingleRange
+            <RangeInput
+              componentId="ratingFilter"
+              dataField="rating"
+              title="Ratings"
+              URLParams={true}
+              snap={false}
+              range={{
+                "start": 2,
+                "end": 5
+              }}
+            />
+						{/* <SingleRange
 							componentId="ratingsfilter"
 							title="Filter by ratings"
 							dataField="rating"
@@ -45,7 +60,7 @@ class Index extends React.Component {
 								padding: "5px",
 								marginTop: "10px"
 							}}
-						/>
+						/> */}
 					</ul>
 					<div className="wrapper">
 						<ResultCard
@@ -53,12 +68,12 @@ class Index extends React.Component {
 							componentId="result"
 							stream={true}
 							dataField="name"
-							size={10}
+							size={20}
 							pagination={false}
 							showResultStats={true}
 							loader="Loading Results.."
 							react={{
-								and: ["searchbox"]
+								and: ["search", "ratingFilter"]
 							}}
 							onData={(res) => {
 								return {
@@ -76,7 +91,7 @@ class Index extends React.Component {
 						.wrapper {
 							padding-left: 300px;
 							}
-					  
+
 						@media only screen and (max-width : 992px) {
 						.wrapper {
 							padding-left: 0;
@@ -87,5 +102,6 @@ class Index extends React.Component {
 			</ReactiveBase>
 		);
 	}
+}
 
-export default withRedux(initStore)(Index)
+export default withRedux(initStore)(Index);
