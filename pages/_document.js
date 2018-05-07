@@ -14,8 +14,8 @@ export default class MyDocument extends Document {
 					<meta name="theme-color" content="#673ab7" />
 					<link rel="manifest" href="static/manifest.json" />
 					{/* Import Roboto Font */}
-					<link 
-						rel="stylesheet" 
+					<link
+						rel="stylesheet"
 						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
 					/>
 					{/* Import Google Icon Font */}
@@ -25,7 +25,7 @@ export default class MyDocument extends Document {
 					/>
 					{/* Import materialize.css */}
 					<link
-						rel="stylesheet" 
+						rel="stylesheet"
 						href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/css/materialize.min.css"
 					/>
 					<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js" />

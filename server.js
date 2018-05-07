@@ -9,7 +9,6 @@ const lusca = require('lusca');
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
-const sharp = require('sharp');
 const crypto = require('crypto');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);

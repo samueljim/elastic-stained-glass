@@ -2,13 +2,7 @@ import 'isomorphic-fetch';
 import React from 'react';
 import Markdown from 'react-markdown'
 import withRedux from 'next-redux-wrapper';
-<<<<<<< HEAD
-import { ReactiveBase, RangeInput, ResultCard, CategorySearch, SingleRange  } from '@appbaseio/reactivesearch';
-=======
-import initStore from '../utils/store';
-
-import { ReactiveBase, ResultCard, CategorySearch, SingleRange  } from '@appbaseio/reactivesearch';
->>>>>>> master
+import { ReactiveBase, RangeInput, DataSearch, TagCloud, ResultCard, CategorySearch, SingleRange  } from '@appbaseio/reactivesearch';
 
 import CssBaseline from 'material-ui/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
@@ -17,62 +11,30 @@ const theme = createMuiTheme({
 	palette: {
 	  type: 'dark'
 	},
-  });
+});
 
 class Index extends React.Component {
+
 	render() {
 		return (
 			<ReactiveBase
 			app="car-store"
 			credentials="cf7QByt5e:d2d60548-82a9-43cc-8b40-93cbbe75c34c">
-<<<<<<< HEAD
-			  {/* <div className="navbar-fixed"> */}
-					{/* <nav> */}
-						{/* <div className="nav-wrapper"> */}
-							<a data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-							{/* <p>Hey</p> */}
-						{/* </div> */}
-					{/* </nav> */}
-				{/* </div> */}
 					<ul id="slide-out" className="sidenav sidenav-fixed">
-						<CategorySearch
+						<DataSearch
+              autosuggest={true}
 							componentId="search"
-							dataField="name"
-							categoryField="brand.raw"
+							dataField={["name", "brand"]}
               placeholder="Search for cars"
               URLParams={true}
-							style={{
-								padding: "5px",
-								marginTop: "10px"
-							}}
 						/>
-            <RangeInput
-              componentId="ratingFilter"
-              dataField="rating"
-              title="Ratings"
+            <TagCloud
+              componentId="TagCloud"
+              multiSelect={true}
+              showFilter={true}
               URLParams={true}
-              snap={false}
-              range={{
-                "start": 2,
-                "end": 5
-              }}
+              dataField="brand.raw"
             />
-						{/* <SingleRange
-							componentId="ratingsfilter"
-							title="Filter by ratings"
-							dataField="rating"
-							data={[
-								{"start": "4", "end": "5", "label": "4 stars and up"},
-								{"start": "3", "end": "5", "label": "3 stars and up"},
-								{"start": "2", "end": "5", "label": "2 stars and up"},
-								{"start": "1", "end": "5", "label": "see all ratings"},
-							]}
-							defaultSelected="see all ratings"
-							style={{
-								padding: "5px",
-								marginTop: "10px"
-							}}
-						/> */}
 					</ul>
 					<div className="wrapper">
 						<ResultCard
@@ -85,7 +47,7 @@ class Index extends React.Component {
 							showResultStats={true}
 							loader="Loading Results.."
 							react={{
-								and: ["search", "ratingFilter"]
+								and: ["search", "TagCloud"]
 							}}
 							onData={(res) => {
 								return {
@@ -111,44 +73,9 @@ class Index extends React.Component {
 					}
 				 	`}</style>
 				</div>
-=======
-				<CssBaseline />
-				<MuiThemeProvider theme={theme}>
-					<CategorySearch
-						componentId="searchbox"
-						dataField="name"
-						categoryField="brand.raw"
-						placeholder="Search for cars"
-					/>
-					<ResultCard
-						title="Results"
-						componentId="result"
-						stream={true}
-						dataField="name"
-						size={10}
-						pagination={false}
-						showResultStats={true}
-						loader="Loading Results.."
-						react={{
-							and: ["searchbox"]
-						}}
-						onData={(res) => {
-							return {
-								image: "https://www.enterprise.com/content/dam/global-vehicle-images/cars/FORD_FOCU_2012-1.png",
-								title: res.name,
-								description: res.brand + " " + "★".repeat(res.rating)
-							}
-						}}
-						style={{
-							width: "100%",
-							textAlign: "center"
-						}}
-					/>
-				</MuiThemeProvider>
->>>>>>> master
 			</ReactiveBase>
 		);
 	}
 }
 
-export default withRedux(initStore)(Index);
+export default (Index);
