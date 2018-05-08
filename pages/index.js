@@ -1,81 +1,77 @@
-import 'isomorphic-fetch';
-import React from 'react';
-import Markdown from 'react-markdown'
-import withRedux from 'next-redux-wrapper';
-import { ReactiveBase, RangeInput, DataSearch, TagCloud, ResultCard, CategorySearch, SingleRange  } from '@appbaseio/reactivesearch';
+import React, { Component } from 'react';
+import { ReactiveBase, DataSearch } from '@appbaseio/reactivesearch';
+import Modal from 'react-responsive-modal';
 
-import CssBaseline from 'material-ui/CssBaseline';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import Header from '../components/Header';
+import Results from '../components/Results';
 
-const theme = createMuiTheme({
-	palette: {
-	  type: 'dark'
+const theme = {
+	typography: {
+		fontFamily: 'Lato, Helvetica, sans-serif',
 	},
-});
+	colors: {
+		primaryColor: '#949494',
+		titleColor: 'white'
+	},
+	secondaryColor: 'mediumseagreen',
+};
 
-class Index extends React.Component {
+class Index extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			currentTopics: [],
+		};
+	}
+
+	setTopics = (currentTopics) => {
+		this.setState({
+			currentTopics: currentTopics || [],
+		});
+	}
+
+	toggleTopic = (Topic) => {
+		const { currentTopics } = this.state;
+		const nextState = currentTopics.includes(Topic)
+			? currentTopics.filter(item => item !== Topic)
+			: currentTopics.concat(Topic);
+		this.setState({
+			currentTopics: nextState,
+		});
+	}
 
 	render() {
 		return (
-			<ReactiveBase
-			app="car-store"
-			credentials="cf7QByt5e:d2d60548-82a9-43cc-8b40-93cbbe75c34c">
-					<ul id="slide-out" className="sidenav sidenav-fixed">
-						<DataSearch
-              autosuggest={true}
-							componentId="search"
-							dataField={["name", "brand"]}
-              placeholder="Search for cars"
-              URLParams={true}
-						/>
-            <TagCloud
-              componentId="TagCloud"
-              multiSelect={true}
-              showFilter={true}
-              URLParams={true}
-              dataField="brand.raw"
-            />
-					</ul>
-					<div className="wrapper">
-						<ResultCard
-							title="Results"
-							componentId="result"
-							stream={true}
-							dataField="name"
-							size={20}
-							pagination={false}
-							showResultStats={true}
-							loader="Loading Results.."
-							react={{
-								and: ["search", "TagCloud"]
-							}}
-							onData={(res) => {
-								return {
-									image: "https://www.enterprise.com/content/dam/global-vehicle-images/cars/FORD_FOCU_2012-1.png",
-									title: res.name,
-									description: res.brand + " " + "★".repeat(res.rating)
-								}
-							}}
-							style={{
-								width: "100%",
-								textAlign: "center"
-							}}
-						/>
-					<style jsx global>{`
-						.wrapper {
-							padding-left: 300px;
-							}
-
-						@media only screen and (max-width : 992px) {
-						.wrapper {
-							padding-left: 0;
-						}
-					}
-				 	`}</style>
-				</div>
-			</ReactiveBase>
+			<section className="container">
+				<ReactiveBase
+					app="gitxplore-app"
+					credentials="4oaS4Srzi:f6966181-1eb4-443c-8e0e-b7f38e7bc316"
+					type="gitxplore-latest"
+					theme={theme}
+				>
+					<div className="flex row-reverse app-container">
+						<Header currentTopics={this.state.currentTopics} setTopics={this.setTopics} />
+						<div className="results-container">
+							<DataSearch
+								componentId="repo"
+								filterLabel="Search"
+								dataField={['name', 'description', 'name.raw', 'fullname', 'owner', 'Topics']}
+								placeholder="Search Repos"
+								iconPosition="left"
+								autosuggest={true}
+								URLParams={true}
+								className="data-search-container results-container"
+								innerClass={{
+									input: 'search-input',
+								}}
+							/>
+							<Results currentTopics={this.state.currentTopics} toggleTopic={this.toggleTopic} />
+						</div>
+					</div>
+				</ReactiveBase>
+			</section>
 		);
 	}
 }
 
-export default (Index);
+export default Index;

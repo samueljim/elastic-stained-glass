@@ -14,14 +14,17 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const moment = require('moment');
 
+
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dir: '.', dev });
 const handle = app.getRequestHandler();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
+// const imageDB = process.env.imageDB || 'mongodb://isearch03-dev.qut.edu.au:27017/glass';
+// const mongoURL = process.env.mongoURL || 'mongodb://isearch03-dev.qut.edu.au:27017/glass';
+
 const imageDB = process.env.imageDB || 'mongodb://admin:password@ds227199.mlab.com:27199/glass';
 const mongoURL = process.env.mongoURL || 'mongodb://admin:password@ds227199.mlab.com:27199/glass';
-
 const maxSize = 2000000;
 
 // Storage of images uploaded

@@ -1,6 +1,6 @@
 {
-  "name": "NextSimpleStarter",
-  "short_name": "Next PWA",
+  "name": "isearch glass app",
+  "short_name": "isearch",
   "icons": [
     {
       "src": "img/apple-touch-icon-120x120.png",
@@ -30,6 +30,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#673ab7",
-  "background_color": "#EEE"
+  "theme_color": "#ff0000",
+  "background_color": "#000"
 }
