@@ -63,7 +63,7 @@ const Results = ({ toggleTopic, currentTopics }) => (
 				resultsInfo: 'result-list-info',
 				poweredBy: 'powered-by',
 			}}
-			size={8}
+			size={10}
 			sortOptions={[
 				{
 					label: 'Best Match',
