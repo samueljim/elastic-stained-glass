@@ -13,19 +13,21 @@ const crypto = require('crypto');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const moment = require('moment');
-
+const dotenv = require("dotenv");
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dir: '.', dev });
 const handle = app.getRequestHandler();
 
-const PORT = process.env.PORT || 8080;
-// const imageDB = process.env.imageDB || 'mongodb://isearch03-dev.qut.edu.au:27017/glass';
-// const mongoURL = process.env.mongoURL || 'mongodb://isearch03-dev.qut.edu.au:27017/glass';
+dotenv.load({
+  path: ".env.config"
+});
 
-const imageDB = process.env.imageDB || 'mongodb://admin:password@ds227199.mlab.com:27199/glass';
-const mongoURL = process.env.mongoURL || 'mongodb://admin:password@ds227199.mlab.com:27199/glass';
-const maxSize = 2000000;
+const PORT = process.env.PORT;
+
+const imageDB = process.env.imageDB;
+const mongoURL = process.env.mongoURL;
+const maxSize = process.env.maxFileSize;
 
 // Storage of images uploaded
 const storage = new GridFsStorage({

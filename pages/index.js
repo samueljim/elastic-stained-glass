@@ -16,6 +16,8 @@ const theme = {
 	secondaryColor: 'mediumseagreen',
 };
 
+
+
 class Index extends Component {
 	constructor(props) {
 		super(props);
@@ -38,7 +40,8 @@ class Index extends Component {
 		this.setState({
 			currentTopics: nextState,
 		});
-	}
+  }
+
 
 	render() {
 		return (

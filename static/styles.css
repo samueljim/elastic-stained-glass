@@ -298,3 +298,7 @@ body {
 		margin-bottom: 50px;
   }
 }
+
+img {
+  max-width: 400px;
+}

@@ -1,8 +1,11 @@
 import React from 'react';
 import { SelectedFilters, ReactiveList } from '@appbaseio/reactivesearch';
 import PropTypes from 'prop-types';
+import Modal from 'react-responsive-modal';
+import ModalApp from './ModalApp';
 
 import Topic from './Topic';
+import {config} from './config';
 // import Loader from './Loader';
 
 const onResultStats = (results, time) => (
@@ -12,37 +15,38 @@ const onResultStats = (results, time) => (
 );
 
 const onData = (data, currentTopics, toggleTopic) => (
-	<div className="result-item" key={data.fullname}>
-		<div className="flex justify-center align-center result-card-header">
-			<img className="avatar" src={data.avatar} alt="User avatar" />
-			<a className="link" href={data.url} target="_blank" rel="noopener noreferrer">
-				<div className="flex wrap">
-					<div>{data.owner}/</div>
-					<div>{data.name}</div>
-				</div>
-			</a>
-		</div>
-		<div className="m10-0">{data.description}</div>
-		<div className="flex wrap justify-center">
-			{
-				data.topics.slice(0, 7)
-					.map(item => (
-						<Topic
-							key={item}
-							active={currentTopics.includes(item)}
-							toggleTopic={toggleTopic}
-						>
-							{item}
-						</Topic>
-					))
-			}
-		</div>
-		<div className="flex">
-			<div><div className="btn card-btn"><i className="card-icon fas fa-star" />{data.stars}</div></div>
-			<div><div className="btn card-btn"><i className="card-icon fas fa-code-branch" />{data.forks}</div></div>
-			<div><div className="btn card-btn"><i className="card-icon fas fa-eye" />{data.watchers}</div></div>
-		</div>
-	</div>
+  <div>
+    <ModalApp data={data} children={
+      <div className="result-item" key={data[config.id]}>
+      <div className="flex justify-center align-center result-card-header">
+        <img className="avatar" src={data[config.picture]} alt="avatar" />
+        <a className="link" href={data[config.url]} target="_blank" rel="noopener noreferrer">
+          <div className="flex wrap">
+            <div>{data[config.title]}/</div>
+            <div>{data[config.name]}</div>
+          </div>
+        </a>
+      </div>
+      <div className="m10-0">{data[config.info]}</div>
+      {(data[config.tags]) &&
+      <div className="flex wrap justify-center">
+        {
+          data[config.tags].slice(0, 7)
+          .map(item => (
+              <Topic
+              key={item}
+                active={currentTopics.includes(item)}
+                toggleTopic={toggleTopic}
+                >
+                {item}&emsp;
+              </Topic>
+            ))
+          }
+      </div>
+      }
+    </div>
+    } />
+  </div>
 );
 
 const Results = ({ toggleTopic, currentTopics }) => (

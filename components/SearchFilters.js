@@ -22,7 +22,8 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 				componentId="topics"
 				dataField="topics.raw"
 				placeholder="Select topics"
-				title="Repo Topics"
+        title="Repo Topics"
+        url={true}
 				filterLabel="Topics"
 				size={1000}
 				queryFormat="and"

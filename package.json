@@ -8,9 +8,11 @@
     "compress.js": "^1.1.2",
     "compression": "^1.7.2",
     "connect-mongo": "^2.0.1",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "express-validator": "^5.1.2",
+    "global-configuration": "^0.3.1",
     "gridfs-stream": "^1.1.1",
     "leo-profanity": "^1.2.4",
     "lusca": "^1.5.2",
@@ -29,13 +31,14 @@
     "react": "^16.0.0",
     "react-blur-admin": "^0.10.0",
     "react-dom": "^16.0.0",
+    "react-global-configuration": "^1.2.1",
     "react-markdown": "^3.3.0",
     "react-redux": "^5.0.6",
     "react-responsive-modal": "^3.0.1",
     "redux": "^3.7.2",
-    "sharp": "^0.20.1",
     "shortid": "^2.2.8",
-    "url-safe-string": "^1.1.0"
+    "url-safe-string": "^1.1.0",
+    "vegetable": "^1.0.0"
   },
   "scripts": {
     "dev": "node server",

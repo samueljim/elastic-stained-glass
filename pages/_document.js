@@ -2,8 +2,8 @@ import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {
-	render() {
-		return (
+  render() {
+    return (
 			<html>
 				<Head>
           <meta charset="utf-8"/>
