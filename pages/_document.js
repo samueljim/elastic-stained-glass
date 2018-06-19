@@ -1,5 +1,6 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
+import appSettings from './settings.json';
 
 export default class MyDocument extends Document {
   render() {
@@ -19,7 +20,7 @@ export default class MyDocument extends Document {
 						rel="stylesheet"
 						href="static/styles.css"
 					/>
-					<title>Glass app</title>
+					<title>{appSettings.title}</title>
 				</Head>
 				<body>
           <noscript>

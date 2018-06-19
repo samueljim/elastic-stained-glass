@@ -1,0 +1,4 @@
+PORT=8080
+elasticURL=mongodb://isearch03-dev.qut.edu.au:27017/glass
+mongoURL=mongodb://isearch03-dev.qut.edu.au:27017/glass
+maxFileSize=2000000

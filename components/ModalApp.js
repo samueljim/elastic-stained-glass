@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-responsive-modal';
-import {config} from './config';
+import config from './config.json';
 
 export default class ModalApp extends React.Component {
   constructor(props) {

@@ -5,7 +5,7 @@ import Modal from 'react-responsive-modal';
 import ModalApp from './ModalApp';
 
 import Topic from './Topic';
-import {config} from './config';
+import config from './config.json';
 // import Loader from './Loader';
 
 const onResultStats = (results, time) => (

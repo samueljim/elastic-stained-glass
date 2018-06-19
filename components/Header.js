@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import appSettings from './settings.json';
 import SearchFilters from './SearchFilters';
 
 class Header extends Component {
@@ -20,7 +21,7 @@ class Header extends Component {
 	render() {
 		return (
 			<nav className={`navbar ${this.state.visible ? 'active' : ''}`}>
-				<div className="title">ELASTIC GLASS</div>
+				<div className="title">{appSettings.heading}</div>
 				<div className="btn toggle-btn" onClick={this.toggleVisibility}>Toggle Filters</div>
 				<SearchFilters {...this.props} visible={this.state.visible} />
 			</nav>

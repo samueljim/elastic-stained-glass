@@ -1,4 +1,5 @@
 const { createServer } = require('http');
+const fs = require('fs-extra')
 const path = require('path');
 const next = require('next');
 const express = require('express');
@@ -13,25 +14,34 @@ const crypto = require('crypto');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const moment = require('moment');
-const dotenv = require("dotenv");
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dir: '.', dev });
 const handle = app.getRequestHandler();
 
-dotenv.load({
-  path: ".env.config"
+// Import of config file for server settings
+const {databaseMap, serverSettings, appSettings} = require("./config.js");
+
+// Move config file into the client side of the project so that it's accessible from there
+fs.writeJson(__dirname + "/components/config.json", databaseMap, err => {
+  console.log("fs", err);
 });
+fs.writeJson(__dirname + "/components/settings.json", appSettings, err => {
+  console.log("fs", err);
+});
+fs.writeJson(__dirname + "/pages/settings.json", appSettings, err => {
+  console.log("fs", err);
+});
+const PORT = serverSettings.port;
 
-const PORT = process.env.PORT;
+const mongoURL = serverSettings.mongoURL;
+const maxSize = serverSettings.maxFileSize;
 
-const imageDB = process.env.imageDB;
-const mongoURL = process.env.mongoURL;
-const maxSize = process.env.maxFileSize;
+console.log(mongoURL);
 
 // Storage of images uploaded
 const storage = new GridFsStorage({
-  url: imageDB,
+  url: mongoURL,
   file: (req, file) => {
     return new Promise((resolve, reject) => {
       crypto.randomBytes(16, (errors, buf) => {
