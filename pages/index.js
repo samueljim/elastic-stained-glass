@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { ReactiveBase, DataSearch } from '@appbaseio/reactivesearch';
-import Modal from 'react-responsive-modal';
+// import Modal from 'react-responsive-modal';
 
 import Header from '../components/Header';
 import Results from '../components/Results';
-
+import appSettings from '../components/settings.json';
 const theme = {
 	typography: {
 		fontFamily: 'Lato, Helvetica, sans-serif',
@@ -42,24 +42,24 @@ class Index extends Component {
 		});
   }
 
-
 	render() {
 		return (
 			<section className="container">
 				<ReactiveBase
-					app="gitxplore-app"
-					credentials="4oaS4Srzi:f6966181-1eb4-443c-8e0e-b7f38e7bc316"
-					type="gitxplore-latest"
+          url={appSettings.elasticURI}
+					app={appSettings.elasticApp}
+					credentials={appSettings.credentials}
+					type={appSettings.type}
 					theme={theme}
 				>
 					<div className="flex row-reverse app-container">
 						<Header currentTopics={this.state.currentTopics} setTopics={this.setTopics} />
 						<div className="results-container">
 							<DataSearch
-								componentId="repo"
+								componentId="search"
 								filterLabel="Search"
-								dataField={['name', 'description', 'name.raw', 'fullname', 'owner', 'Topics']}
-								placeholder="Search Repos"
+								dataField={['name', 'description', 'name.raw', 'fullname', 'owner', 'topics']}
+								placeholder="Search"
 								iconPosition="left"
 								autosuggest={true}
 								URLParams={true}

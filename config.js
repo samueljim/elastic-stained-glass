@@ -5,15 +5,18 @@
 *
 */
 const serverSettings = {
-  port: '8080',
-  mongoURL: 'mongodb://isearch03-dev.qut.edu.au:27017/glass',
-  maxFileSize: '2000000'
+  port: "8080",
+  mongoURL: "mongodb://isearch03-dev.qut.edu.au:27017/glass",
+  maxFileSize: "2000000"
 };
 
 const appSettings = {
-  title: 'ELASTIC GLASS',
-  heading: 'SEARCH',
-  elasticURI: 'fullname'
+  title: "ELASTIC GLASS",
+  heading: "SEARCH",
+  elasticURI: "",
+  elasticApp: "gitxplore-app",
+  credentials: "4oaS4Srzi:f6966181-1eb4-443c-8e0e-b7f38e7bc316",
+  type: "gitxplore-latest"
 }
 /*
 *  Change this to make changes to how the elastic search is mapped ot the database headings
@@ -24,15 +27,15 @@ const appSettings = {
 *  picture should be a url
 */
 const databaseMap = {
-  id: 'fullname',
-  fullname: 'fullname',
-  picture: 'avatar',
-  title: 'owner',
-  name: 'name',
-  url: 'url',
-  info: 'info',
-  description: 'description',
-  tags: 'topics'
+  id: "fullname",
+  fullname: "fullname",
+  picture: "avatar",
+  title: "owner",
+  name: "name",
+  url: "url",
+  info: "info",
+  description: "description",
+  tags: "topics"
 };
 
 export { serverSettings, databaseMap, appSettings };
