@@ -5,15 +5,17 @@ import { ReactiveBase, DataSearch } from '@appbaseio/reactivesearch';
 import Header from '../components/Header';
 import Results from '../components/Results';
 import appSettings from '../components/settings.json';
+import config from '../components/config.json';
+
 const theme = {
 	typography: {
-		fontFamily: 'Lato, Helvetica, sans-serif',
+		fontFamily: appSettings.fontFamily,
 	},
 	colors: {
-		primaryColor: '#949494',
-		titleColor: 'white'
+		primaryColor: appSettings.primaryColor,
+		titleColor: appSettings.titleColor
 	},
-	secondaryColor: 'mediumseagreen',
+	secondaryColor: appSettings.secondaryColor,
 };
 
 
@@ -41,7 +43,6 @@ class Index extends Component {
 			currentTopics: nextState,
 		});
   }
-
 	render() {
 		return (
 			<section className="container">
@@ -58,7 +59,7 @@ class Index extends Component {
 							<DataSearch
 								componentId="search"
 								filterLabel="Search"
-								dataField={['name', 'description', 'name.raw', 'fullname', 'owner', 'topics']}
+								dataField={[config.name, config.title, config.description, config.fullname, config.tags]}
 								placeholder="Search"
 								iconPosition="left"
 								autosuggest={true}

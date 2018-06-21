@@ -13,6 +13,10 @@ const serverSettings = {
 const appSettings = {
   title: "ELASTIC GLASS",
   heading: "SEARCH",
+  font: 'Lato, Helvetica, sans-serif',
+  primaryColor: '#949494',
+  titleColor: 'white',
+	secondaryColor: 'mediumseagreen',
   elasticURI: "",
   elasticApp: "gitxplore-app",
   credentials: "4oaS4Srzi:f6966181-1eb4-443c-8e0e-b7f38e7bc316",

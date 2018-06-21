@@ -1,6 +1,6 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
-import appSettings from './settings.json';
+import appSettings from '../components/settings.json';
 
 export default class MyDocument extends Document {
   render() {

@@ -14,7 +14,8 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 				dataField="language.raw"
 				placeholder="Select languages"
 				title="Language"
-				filterLabel="Language"
+        filterLabel="Language"
+        URLParams={true}
 			/>
 		</div>
 		<div className="child m10">
@@ -23,7 +24,7 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 				dataField="topics.raw"
 				placeholder="Select topics"
         title="Repo Topics"
-        url={true}
+        URLParams={true}
 				filterLabel="Topics"
 				size={1000}
 				queryFormat="and"
@@ -36,7 +37,8 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 				componentId="pushed"
 				dataField="pushed"
 				placeholder="Repo last active"
-				title="Last Active"
+        title="Last Active"
+        URLParams={true}
 				filterLabel="Last Active"
 				data={[
 					{ start: 'now-1M', end: 'now', label: 'Last 30 days' },
@@ -50,7 +52,8 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 				componentId="created"
 				dataField="created"
 				placeholder="Repo created"
-				title="Created"
+        title="Created"
+        URLParams={true}
 				filterLabel="Created"
 				data={[
 					{
@@ -114,7 +117,8 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 		<div className="child m10">
 			<RangeSlider
 				componentId="stars"
-				title="Repo Stars"
+        title="Repo Stars"
+        URLParams={true}
 				dataField="stars"
 				range={{ start: 0, end: 300000 }}
 				showHistogram={false}
@@ -131,7 +135,8 @@ const SearchFilters = ({ currentTopics, setTopics, visible }) => (
 			<RangeSlider
 				componentId="forks"
 				title="Repo Forks"
-				dataField="forks"
+        dataField="forks"
+        URLParams={true}
 				range={{ start: 0, end: 180500 }}
 				showHistogram={false}
 				rangeLabels={{

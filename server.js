@@ -31,9 +31,6 @@ fs.writeJson(__dirname + "/components/config.json", databaseMap, err => {
 fs.writeJson(__dirname + "/components/settings.json", appSettings, err => {
   if (err) console.log("fs", err);
 });
-fs.writeJson(__dirname + "/pages/settings.json", appSettings, err => {
-  if (err) console.log("fs", err);
-});
 const PORT = serverSettings.port;
 
 const mongoURL = serverSettings.mongoURL;

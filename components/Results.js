@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Modal from 'react-responsive-modal';
 import ModalApp from './ModalApp';
 
-import Topic from './Topic';
 import config from './config.json';
 // import Loader from './Loader';
 
@@ -16,36 +15,7 @@ const onResultStats = (results, time) => (
 
 const onData = (data, currentTopics, toggleTopic) => (
   <div>
-    <ModalApp data={data} children={
-      <div className="result-item" key={data[config.id]}>
-      <div className="flex justify-center align-center result-card-header">
-        <img className="avatar" src={data[config.picture]} alt="avatar" />
-        <a className="link" href={data[config.url]} target="_blank" rel="noopener noreferrer">
-          <div className="flex wrap">
-            <div>{data[config.title]}/</div>
-            <div>{data[config.name]}</div>
-          </div>
-        </a>
-      </div>
-      <div className="m10-0">{data[config.info]}</div>
-      {(data[config.tags]) &&
-      <div className="flex wrap justify-center">
-        {
-          data[config.tags].slice(0, 7)
-          .map(item => (
-              <Topic
-              key={item}
-                active={currentTopics.includes(item)}
-                toggleTopic={toggleTopic}
-                >
-                {item}&emsp;
-              </Topic>
-            ))
-          }
-      </div>
-      }
-    </div>
-    } />
+    <ModalApp data={data} currentTopics={currentTopics} toggleTopic={toggleTopic}/>
   </div>
 );
 
