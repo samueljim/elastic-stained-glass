@@ -1,7 +1,7 @@
 # Client side elastic serach engine made with react/next.js
 ![demo](/image1.gif "Demo of serach filters")
 
-[https://elastic-glass-jbtrhfwliy.now.sh/](https://elastic-glass-jbtrhfwliy.now.sh/)
+[https://elastic-glass-rsfnuhzosl.now.sh](https://elastic-glass-rsfnuhzosl.now.sh)
 
 This project takes advantage of many new web technologies such as:
 * [nextjs - server side rendered offline react](https://nextjs.org/)
